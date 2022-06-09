@@ -1,0 +1,58 @@
+<div class="chat-wrapper">
+    <div class="row">
+        <div class="col-3 box1 ">
+            <div class="col-users">
+                <h2 class="text-center "><strong>USERS</strong></h2>
+            </div>
+            <div class="online-users-panel mt-5 ">
+                <div class="chat">
+                    <ng-container *ngFor="let user of users;">
+                        <div class="online-user">
+                            <div class="online-icon">
+                                <span *ngIf="user?.id.length > 0" class="online"></span>
+                            </div>
+                            <span class="text-center  user ms-5 rounded-circle border border-3">{{user.name|fname}}</span>
+                        </div>
+                    </ng-container>
+                    <div class="online-users" *ngIf="users?.length ==0">No Users</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 box1  d-flex flex-row">
+            <div class="col-chat">
+                <div class="chat-panel row1">
+                    <ng-container *ngFor="let message of messages; let i = index;">
+                        <div class="message-right">
+                            <div *ngIf="users[0].id===first; then content else second"></div>
+                            <ng-template #content>
+                                <div class="msg-to border border-primary rounded-pill d-inline" >
+                                    {{message.msg}}
+                                    
+                                    <span class="time text-muted small">
+                                        {{message.time|date:'shortTime'}} | {{message.user}}
+                                    </span>
+                                </div>
+                            </ng-template>
+                            <ng-template #second>
+                                <div class="right border border-primary rounded-pill d-inline"  >
+                                    {{message.msg}}
+                                    
+                                    <span class="time text-muted small">
+                                        {{message.time}} | {{message.user}}
+                                    </span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="send-text  mess ">
+                    <input type="text" placeholder="Type your message here.." name="textsend" [(ngModel)]=" msgtext"
+                        class="  w-75">
+                    <button><i class="fa-solid fa-paper-plane" (click)="sendMessage()"></i></button>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>

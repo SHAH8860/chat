@@ -1,0 +1,23 @@
+.box1{
+    height: 619px;
+}
+.mess{
+   
+    width: 75%;
+}
+.row1{
+    height:500px;
+    border-left: 2px solid whitesmoke;
+    width: 140vh;
+    background-image: url("../../../assets/img/img1.png");
+}
+
+
+.user{
+    
+    font-size: 50px;
+}
+.right{
+    margin-left: 150px;
+    
+}
